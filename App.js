@@ -14,6 +14,7 @@ import ProductDetails from './screens/ProductDetails';
 import Store from './redux/store'
 import { Provider, useSelector } from 'react-redux';
 import TabIconComponent from './component/TabIconComponent';
+import Process from './screens/Process';
 
 
 
@@ -26,6 +27,7 @@ const HomeStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='ProductDetails' component={ProductDetails} />
+      <Stack.Screen name='process' component={Process} />
     </Stack.Navigator>
 
   )

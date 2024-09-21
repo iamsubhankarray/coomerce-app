@@ -2,15 +2,16 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import Header from "../component/Header";
 import CartItem from "../component/CartItem.js";
 import { useSelector } from "react-redux";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
 
-function CartScreen(item) {
+function CartScreen(item,props) {
 
-  const cartData = useSelector((state) => state.reducer)
-  console.log(cartData);
+  const cartData = useSelector((state) => state.cart)
+  const handlechechout =()=>{
+    props.navigation.navigate("process",{cartData})
+  }
   
  
   
@@ -43,7 +44,8 @@ function CartScreen(item) {
         position:"absolute",
         bottom:-450,
         
-        }}>
+        }}
+        onPress={handlechechout}>
             <Text style={{fontSize:45,color:"white"}}>check out</Text>
           </TouchableOpacity>
 

@@ -6,8 +6,6 @@ const cors = require ('cors');
 const jwt = require("jsonwebtoken");
 
 const cookieParser = require("cookie-parser");
-const userAuth = require("./usercontroller.js");
-const {account,id} = require("./aapwriteConfig.js")
 
 
 
@@ -20,7 +18,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 const PORT = 8080
-const db = 'mongodb://127.0.0.1:27017/user'
+const db = 'mongodb+srv://iamsubhankarray:iamtheknight@cluster0.nvqbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/user'
 mongoose.connect(db)
   .then(() => console.log('db connected'))
   .catch((err) => console.log(err)
@@ -68,7 +66,7 @@ app.post('/login', async (req, res) => {
     if(!isUser){
     res.json({status:401,message:"unauthorized"})}
     else{
-    res.json({status:200,message:"success"})}
+    res.json({status:200,message:"success",user:isUser})}
   
 
 

@@ -1,12 +1,13 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
-const Catagory = ({ item, selectedcategory, setSelectedCategory }) => {
+const Catagory = ({ item}) => {
+  const [selectedcategory,setSelectedCategory] = useState(false)
  
 
   return (
-    <TouchableOpacity onPress={() => setSelectedCategory(item)}>
-      <Text style={[styles.category, selectedcategory === item && { color: "white", backgroundColor: "orange" }]}>{item}</Text>
+    <TouchableOpacity onPress={() => setSelectedCategory(!selectedcategory)}>
+      <Text style={[styles.category, selectedcategory === true && { color: "white", backgroundColor: "orange" }]}>{item}</Text>
     </TouchableOpacity>
   )
 }

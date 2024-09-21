@@ -14,13 +14,12 @@ export default function HomeScreen(props) {
   const [selectedcategory, setSelectedCategory] = useState(null);
   const [productItems, setproductitems] = useState([]);
   const [search, setSearch] = useState("");
-  const filterData = productItems.filter((item)=>(
-    item.title.toLowerCase().includes(search.toLowerCase())||
-    item.description.toLowerCase().includes(search.toLowerCase())))
-  // const[category,setCategory]=useState([])
-  //   axios.get('https://fakestoreapi.com/products/categories')
-  //   .then(res=>setCategory(res.data))
-  //   .catch(err=>console.log(err))
+  const filterData = productItems.filter(
+    (item) =>
+      item.title.toLowerCase().includes(search.toLowerCase()) ||
+      item.description.toLowerCase().includes(search.toLowerCase())
+  );
+  const category = ["men", "women", "kids", "toys", "electronics"];
   axios
     .get("https://fakestoreapi.com/products?limit=10")
     .then((res) => setproductitems(res.data))
@@ -46,35 +45,21 @@ export default function HomeScreen(props) {
           style={styles.input}
         />
       </View>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Text style={styles.title}>Ecommerce App</Text>
+      </View>
+      <FlatList
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        data={category}
+        keyExtractor={(item, index) => index}
+        renderItem={({ item }) => <Catagory item={item} />}
+      />
 
       {/* <<< FlatList ITEM WITH BODY OF THE PAGE>>>     */}
 
       <FlatList
         numColumns={2}
-        ListHeaderComponent={() => (
-          <>
-            {/* <<< MAIN TITLE >>> */}
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Text style={styles.title}>Ecommerce App</Text>
-            </View>
-            {/* <<< SEARCH ELEMENT STARTS >>>> */}
-
-            {/* <<< PRODUCT PAGE >>> */}
-            <FlatList
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}
-              data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-              keyExtractor={(item, index) => index}
-              renderItem={({ item }) => (
-                <Catagory
-                  item={item}
-                  selectedcatagory={selectedcategory}
-                  setSelectedCatagory={setSelectedCategory}
-                />
-              )}
-            />
-          </>
-        )}
         showsVerticalScrollIndicator={false}
         data={filterData}
         renderItem={({ item }) => <Products item={item} />}

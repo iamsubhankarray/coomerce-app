@@ -1,14 +1,17 @@
 import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { REMOVE_FROM_CART } from './redux/constants'
-const cartItem = ({ item }) => {
+import {remove_from_Cart} from '../redux/cartSlice'
+
+
+cartItem = ({ item }) => {
+  
   
   const dispatch = useDispatch()
  
- const handleRemoveCart=(item)=>{
+ const handleRemoveCart=()=>{
 
-  dispatch(REMOVE_FROM_CART(item))
+  dispatch(remove_from_Cart(item))
 
   
  }
@@ -21,18 +24,22 @@ const cartItem = ({ item }) => {
     <View style={{ flexDirection: "row",
     justifyContent:"space-evenly",
     position:"relative",
-    backgroundColor:"#fcdcf7",
     borderRadius:15,
     marginVertical:10
      }}>
       <Image
-        source={{ uri: item.image }}
+        source={{ uri: item.item.image }}
         style={{ width: 80, height: 100 }} />
       <View style={{}}>
-        <Text style={{fontWeight:"bold"}}>{item.id}</Text>
-        <Text>{item.price}</Text>
       </View>
-      <View style={{position:"absolute",bottom:0,right:0,}}>
+      <View style={{marginHorizontal:50}}>
+
+        <Text style={{fontWeight:"bold"}}>ID:{item.item.id}</Text>
+        <Text style={{fontSize:25}}>{item.item.title}</Text>
+        <Text>{item.item.description}</Text>
+        <Text style={{fontSize:20}}>{item.item.price}</Text>
+      </View>
+      <View style={{position:"absolute",bottom:0,right:10,}}>
         <Button 
         title='remove'
         onPress={()=>handleRemoveCart(item)}/>

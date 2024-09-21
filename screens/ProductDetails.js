@@ -1,41 +1,42 @@
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Header from '../component/Header'
-import React, { useContext } from 'react'
 import { useRoute } from '@react-navigation/native'
 
 import { useDispatch } from 'react-redux'
 import { add_to_Cart } from '../redux/cartSlice'
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   
   const dispatch = useDispatch()
 
   const route = useRoute()
   const item = route.params.item
   
-  const handleAddToCart = (item) => {
-    const handleAddToCart = (item) => {
-      // Strip out the rating if it's not needed in the cart
-      const serializableItem = {
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        description: item.description,
-        image: item.image,  // This is just a URI string, so it’s fine
-        category: item.category,
-        // You can include the rating if you really need it, but it's not necessary for adding an item to the cart.
-      };
-    
-      dispatch(add_to_Cart(serializableItem));  // Dispatch the sanitized object
+  const handleAddToCart = () => {
+    // Strip out the rating if it's not needed in the cart
+    const serializableItem = {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      description: item.description,
+      image: item.image,  // This is just a URI string, so it’s fine
+      // category: item.category,
+      // You can include the rating if you really need it, but it's not necessary for adding an item to the cart.
     };
     
+    dispatch(add_to_Cart(serializableItem));  // Dispatch the sanitized object
+    props.navigation.navigate("cart")
+
+  };
+    
+    
     
     
 
 
 
 
-  }
+  
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 35, }}>
@@ -63,17 +64,9 @@ const ProductDetails = () => {
           fontSize: 15,
           fontWeight: 350,
         }}>{item.description}</Text>
-      <Text style={{ fontSize: 15, }}>size</Text>
-      <View style={{
-        flexDirection: "row",
-        borderWidth: 1,
-        Color: "lightgrey",
-        width: "45%"
-      }}>
+        <View style={{position:"static",bottom:-150,}}>
 
-
-
-      </View>
+   
       <TouchableOpacity style={
         {
           backgroundColor: "orange",
@@ -91,6 +84,7 @@ const ProductDetails = () => {
           fontSize: 20,
         }}>Add to Cart</Text>
       </TouchableOpacity>
+        </View>
 
 
     </View>

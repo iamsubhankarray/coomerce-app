@@ -12,11 +12,12 @@ import {
 
 import axios from "axios"
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/userSlice";
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [token, settoken] = useState('')
-  // const navigation = useNavigation()
+  const dispatch = useDispatch()
   
 
 
@@ -28,11 +29,25 @@ export default function Login(props) {
       password,
     }
 
-     await axios.post('http://192.168.0.210:8080/login', loginfo)
-      .then(res=>res.data.status===200 &&props.navigation.navigate("home_stack",{screen:'home_stack'}))
-      .catch(err => console.log('err2:', err))
+   
+    try {
+      const res =await axios.post('http://192.168.0.111:8080/login',loginfo)
+      // .then(res=>console.log(res.data))
+      if (res.data.status===200) {
+        props.navigation.navigate("home_stack",{screen:'home_stack'})
+        dispatch(loginUser(res.data.user))
+        setEmail("")
+        setPassword("")
+        
 
-    .then(setEmail(""),setPassword(""))
+        
+      }
+      
+    } catch (error) {
+      console.log(error);
+      
+      
+    }
 
   }
 

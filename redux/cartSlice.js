@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit"; 
 
 const cartSlice = createSlice({
@@ -6,11 +7,10 @@ const cartSlice = createSlice({
   reducers: {
      add_to_Cart:(state, action) => {
       state.push(action.payload); // Access the payload via action.payload
-      // console.log(action);
-      
+      AsyncStorage.setItem('cart',JSON.stringify(action.payload))
     },
     remove_from_Cart: (state, action) => {
-      return state.filter(item => item.id !== action.payload.item); // Access payload via action.payload
+      return state.filter(item => item.id !== action.payload.id); // Access payload via action.payload
     }
   }
 });
