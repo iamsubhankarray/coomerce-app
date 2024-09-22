@@ -10,7 +10,7 @@ const Products = ({ item, index, }) => {
 
 
   return (
-    <View style={{  alignItems: "center", marginHorizontal: 17, marginTop: 20 }}>
+    <View style={{  alignItems: "center", marginHorizontal: 25, marginTop: 20 }}>
 
       <TouchableOpacity onPress={() => { navigation.navigate("ProductDetails", { item }) }}>
         <Image

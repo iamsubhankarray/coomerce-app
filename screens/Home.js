@@ -85,11 +85,13 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: "white",
     height: 40,
-    marginTop: 10,
+    // marginTop: 10,
     borderRadius: 15,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
+    borderWidth:.5,
+    borderColor:"grey",
 
     paddingHorizontal: 10,
   },
@@ -97,5 +99,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     flex: 1,
     alignSelf: "center",
+   
   },
 });

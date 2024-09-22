@@ -10,7 +10,7 @@ function CartScreen(item, props) {
   };
 
   return (
-    <View style={{ justifyContent: "center" }}>
+    <View style={{ }}>
       <View
         style={{
           marginTop: 35,
@@ -21,28 +21,27 @@ function CartScreen(item, props) {
       >
         <Header iscart={true} />
       </View>
-      <View style={{ marginVertical: 25, marginHorizontal: 25 }}>
+      <View style={{ marginVertical: 5, marginHorizontal: 25,backgroundColor:"white",borderRadius:30,height:600}}>
         <FlatList
           data={cartData}
           keyExtractor={(item, index) => index}
           renderItem={(item) => <CartItem item={item} />}
         />
       </View>
-      <View style={{ position:"static",bottom: -600,}}>
+      <View style={{top:700,position:"absolute",}}>
         <TouchableOpacity
           style={{
             backgroundColor: "orange",
-            height: 50,
-            width: "60%",
-            alignSelf: "center",
+            height: 80,
+            width: "300%",
             borderRadius: 10,
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 15,
+            paddingHorizontal:"auto"
           }}
           onPress={handlechechout}
         >
-          <Text style={{ fontSize: 35, color: "white" }}>check out</Text>
+          <Text style={{ fontSize: 30, color: "white" }}>check out</Text>
         </TouchableOpacity>
       </View>
     </View>

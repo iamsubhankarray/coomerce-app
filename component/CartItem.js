@@ -26,7 +26,7 @@ cartItem = ({ item }) => {
     justifyContent:"space-evenly",
     position:"relative",
     borderRadius:15,
-    marginVertical:10
+    // marginVertical:10
      }}>
       <Image
         source={{ uri: item.item.image }}
