@@ -26,6 +26,7 @@ const ProductDetails = (props) => {
     
     dispatch(add_to_Cart(serializableItem));  // Dispatch the sanitized object
     props.navigation.navigate("cart")
+    
 
   };
     

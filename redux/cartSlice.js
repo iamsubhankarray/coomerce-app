@@ -10,7 +10,7 @@ const cartSlice = createSlice({
       AsyncStorage.setItem('cart',JSON.stringify(action.payload))
     },
     remove_from_Cart: (state, action) => {
-      return state.filter(item => item.id !== action.payload.id); // Access payload via action.payload
+      return state.filter(item => item.title !== action.payload.title); // Access payload via action.payload
     }
   }
 });

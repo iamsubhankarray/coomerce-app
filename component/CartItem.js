@@ -11,7 +11,8 @@ cartItem = ({ item }) => {
  
  const handleRemoveCart=()=>{
 
-  dispatch(remove_from_Cart(item))
+  dispatch(remove_from_Cart(item.item))
+  
 
   
  }
@@ -42,7 +43,7 @@ cartItem = ({ item }) => {
       <View style={{position:"absolute",bottom:0,right:10,}}>
         <Button 
         title='remove'
-        onPress={()=>handleRemoveCart(item)}/>
+        onPress={handleRemoveCart}/>
       </View>
     
     </View>

@@ -5,7 +5,11 @@ import userSlice from "./userSlice";
     reducer:{
         cart:cartSlice,
         user:userSlice
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          serializableCheck: false,  // Disable serializability check for redux-persist
+        }),
 
 })
 export default Store
