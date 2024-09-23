@@ -32,7 +32,6 @@ export default function Login(props) {
    
     try {
       const res =await axios.post('http://192.168.0.210:8080/login',loginfo)
-      // .then(res=>console.log(res.data))
       if (res.data.status===200) {
         props.navigation.navigate("home_stack",{screen:'home_stack'})
         dispatch(loginUser(res.data.user))

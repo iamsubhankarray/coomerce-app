@@ -2,11 +2,13 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import Header from "../component/Header";
 import CartItem from "../component/CartItem.js";
 import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 function CartScreen(item, props) {
   const cartData = useSelector((state) => state.cart);
+  const navigation=useNavigation()
   const handlechechout = () => {
-    props.navigation.navigate("process", { cartData });
+    navigation.navigate("home_stack",{screen:'process'})
   };
 
   return (

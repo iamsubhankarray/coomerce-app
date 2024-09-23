@@ -3,7 +3,7 @@ import React from 'react'
 
 const Process = () => {
   return (
-    <View>
+    <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
       <Text>Process</Text>
     </View>
   )
